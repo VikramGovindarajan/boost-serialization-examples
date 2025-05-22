@@ -17,11 +17,12 @@ if(NOT TARGET boost::serialization)
     INTERFACE_LINK_LIBRARIES "${Boost_SERIALIZATION_LIBRARIES}")
 endif()
 
+find_package(Catch2 REQUIRED)
+
 if(NOT TARGET catch)
-  find_package(Catch REQUIRED)
   add_library(catch INTERFACE IMPORTED)
   set_target_properties(catch PROPERTIES
-    INTERFACE_INCLUDE_DIRECTORIES "${CATCH_INCLUDE_DIRS}")
+    INTERFACE_LINK_LIBRARIES Catch2::Catch2WithMain)
 endif()
 
 
